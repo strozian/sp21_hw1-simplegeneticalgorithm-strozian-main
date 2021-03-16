@@ -28,27 +28,14 @@ def main():
 
     sortedList = sortPopulation(entirePop)
 
-
-    sortedFitnessValues= []
-    for i in range(N):
-        val = countOnes(sortedList[i])
-        sortedFitnessValues.append(val)
-
-    # Time to mutate
-    mutatedPop = []
-    for i in range(N):
-        mutatedPop.append(randFlip(entirePop[i],1/rate))
-
-
-    sortedMutatedList = sortPopulation(mutatedPop)
-    mutatedFitnessValues= []
-    for i in range(N):
-        mutatedFitnessValues.append(countOnes(sortedMutatedList[i]))
-
-    loopMutations(sortedList)
-    # loopElitism(sortedList)
-    # crossoverLoop(sortedList)
-    # crossIssuesLoop(sortedList)
+    """
+    These lines of code will print the generations and their fitness scores to the consoles.
+    Uncomment one at a time.Otherwise you will be inundated with comments on the console.
+    """
+    loopMutations(sortedList) # Uncomment these to get the different graphs for the assignment. THis is for the only mutations
+    # loopElitism(sortedList) # The elitism part
+    # crossoverLoop(sortedList) # The crossover part
+    # crossIssuesLoop(sortedList) # One of my experiments for the word document
 
 
 def countOnes(oneStrand):
