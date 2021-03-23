@@ -32,8 +32,8 @@ def main():
     These lines of code will print the generations and their fitness scores to the consoles.
     Uncomment one at a time.Otherwise you will be inundated with comments on the console.
     """
-    loopMutations(sortedList) # Uncomment these to get the different graphs for the assignment. THis is for the only mutations
-    # loopElitism(sortedList) # The elitism part
+    # loopMutations(sortedList) # Uncomment these to get the different graphs for the assignment. THis is for the only mutations
+    loopElitism(sortedList) # The elitism part
     # crossoverLoop(sortedList) # The crossover part
     # crossIssuesLoop(sortedList) # One of my experiments for the word document
 
@@ -90,12 +90,13 @@ def loopElitism(sortedList):
             top50Clone = top50.copy()
             stud = initialSortedPop[len(initialSortedPop)-1]
             for j in range(len(top50Clone) - 1):
-                top50Clone[j] = randFlip(top50Clone[j], 1 / rate)
+                top50Clone[j] = randFlip(top50Clone[j], 1 / rate) # mutate
             for j in range(len(top50Clone)-1):
                 newGen.append(top50Clone[j])
             for j in range(len(top50)):
                 newGen.append(top50[j])
             newGen.append(stud)
+            print("Length of new generation: ", len(newGen))
             sortedGenList = sortPopulation(newGen)
             genFitnessValues = []
             for j in range(N):
@@ -107,6 +108,7 @@ def loopElitism(sortedList):
             print("Previous Elite Fitness Score",countOnes(stud))
             print("New Fitness values: ", genFitnessValues)
             print("New Elite Value: ", genFitnessValues[len(genFitnessValues) - 1])
+            # print("Length of new generation: ", len(top50))
             print(
                 "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
 
